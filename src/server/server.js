@@ -46,6 +46,7 @@ app.get('/api/books', (req, res) => {
   });
 
   app.get('/api/books/:id', (req, res) => {
+      console.log(req.params)
       let id = req.params.id;
     pool.query(`select * from books where id = ${id}`, (err, rows) => {
       if (err) {
@@ -56,3 +57,16 @@ app.get('/api/books', (req, res) => {
       }
     });
   });
+
+  app.get('/api/reviews/:id', (req, res) => {
+    console.log(req.params)
+    let id = req.params.id;
+  pool.query(`select * from reviews where book_id = ${id}`, (err, rows) => {
+    if (err) {
+        console.log(err)
+      res.send(err);
+    } else {
+      res.send(rows);
+    }
+  });
+});
