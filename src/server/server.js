@@ -34,3 +34,25 @@ app.get('/api/users', (req, res) => {
     }
   });
 });
+
+app.get('/api/books', (req, res) => {
+    pool.query(`select * from books`, (err, rows) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(rows);
+      }
+    });
+  });
+
+  app.get('/api/books/:id', (req, res) => {
+      let id = req.params.id;
+    pool.query(`select * from books where id = ${id}`, (err, rows) => {
+      if (err) {
+          console.log(err)
+        res.send(err);
+      } else {
+        res.send(rows);
+      }
+    });
+  });
