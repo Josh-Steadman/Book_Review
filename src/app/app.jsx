@@ -5,10 +5,11 @@ import {
     Route,
     Link
   } from "react-router-dom";
-import  SampleComponent  from '../components/sample-component/sample-component.jsx';
+
 import Home from '../pages/Home'
 import Books from '../pages/Books'
 import Book from '../pages/Book'
+import SearchBook from '../pages/SearchBook'
 
 function App() {
     return (
@@ -22,6 +23,11 @@ function App() {
         exact = {true}
         exact path='/books'
         component = {Books}>
+        </Route>
+        <Route 
+        exact = {true}
+        exact path='/book'
+        component = {SearchBook}>
         </Route>
         <Route 
          path='/books/:id'

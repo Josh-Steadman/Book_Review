@@ -39,7 +39,7 @@ import Reviews from '../components/Reviews'
             <div>
                 <Header></Header>
         
-        {book.map(b => <div>{b.title}</div> 
+        {book.map(b => <div><h3>{b.title}</h3><p>{b.description}</p></div> 
                 )}
                {book.map(b => <Reviews book_id={b.id}></Reviews>)}
           </div>

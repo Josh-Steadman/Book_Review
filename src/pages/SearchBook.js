@@ -1,21 +1,35 @@
+
 import React, { Component} from 'react';
 import Header from '../components/Header';
-import Reviews from '../components/Reviews';
 
- class Books extends React.Component {
+
+ class SearchBooks extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
         books: [],
         isLoaded: false,
+        bookName: ''
       };
     }
   
     componentDidMount() {
-        console.log("here")
-      fetch('http://localhost:8000/api/books')
+        console.log(this.props.location.search.split('=')[1])
+        let search = this.props.location.search.split('=')[1]
+        if (search == '') {
+            fetch('http://localhost:8000/api/books')
+            .then(res => res.json())
+            .then(result => {
+              this.setState({
+                isLoaded: true,
+                books: result
+              });
+            });
+        }
+      fetch(`http://localhost:8000/book/${search}`)
         .then(res => res.json())
         .then(result => {
+           
           this.setState({
             isLoaded: true,
             books: result
@@ -46,4 +60,4 @@ import Reviews from '../components/Reviews';
       }
     }
   }
-  export default Books;
+  export default SearchBooks;
