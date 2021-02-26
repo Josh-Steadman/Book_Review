@@ -15,8 +15,11 @@ import Header from '../components/Header';
   
     componentDidMount() {
         console.log(this.props.location.search.split('=')[1])
-        let search = this.props.location.search.split('=')[1]
-        if (search == '') {
+        let search = this.props.location.search.split('=')[1] 
+        if(search.includes('+')) {
+            search = search.replace('+', ' ')
+        }
+        if (search === '') {
             fetch('http://localhost:8000/api/books')
             .then(res => res.json())
             .then(result => {
@@ -49,8 +52,8 @@ import Header from '../components/Header';
                 <ul>
                     {books.map(book => (
                     <li key={book.id}>
-                        <a href={`/books/${book.id}`}>go</a>
-                        <h3>{book.title}</h3>
+                        
+                        <a href={`/books/${book.id}`}><h3>{book.title}</h3></a>
                         <p>{book.author}</p>
                     </li>
                     ))}

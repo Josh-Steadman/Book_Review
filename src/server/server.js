@@ -48,6 +48,25 @@ app.get('/api/books', (req, res) => {
     });
   });
 
+  app.get('/api/books/top', (req, res) => {
+    pool.query(`select * from books where rating > 8`, (err, rows) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(rows);
+      }
+    });
+  });
+
+  app.get('/api/readlist', (req, res) => {
+    pool.query(`select * from books where readlist = 'T'`, (err, rows) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(rows);
+      }
+    });
+  });
 //   app.post('/book',  urlencodedParser, (req, res) => {
 //       console.log(req.body)
     //   if (req.body.search != '') {
@@ -72,7 +91,7 @@ app.get('/api/books', (req, res) => {
             if (err) {
               res.send(err);
             } else {
-            //   res.send(rows);
+            
             res.send(rows);
             }
           });
@@ -107,3 +126,18 @@ app.get('/api/books', (req, res) => {
     }
   });
 });
+
+  app.post('/readlist',  urlencodedParser, (req, res) => {
+          console.log(req.body)
+          
+            pool.query(`Update books SET readlist = 'T' where title = '${req.body.title}'; `, (err, rows) => {
+                if (err) {
+                  res.send(err);
+                } else {
+                //   res.send(rows);
+                res.redirect('/');
+                }
+              });
+          
+        
+      });

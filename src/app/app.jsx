@@ -10,6 +10,7 @@ import Home from '../pages/Home'
 import Books from '../pages/Books'
 import Book from '../pages/Book'
 import SearchBook from '../pages/SearchBook'
+import Readlist from '../pages/Readlist';
 
 function App() {
     return (
@@ -32,6 +33,11 @@ function App() {
         <Route 
          path='/books/:id'
         component = {Book}>
+        </Route>
+        <Route 
+        exact = {true}
+        exact path='/readlist'
+        component = {Readlist}>
         </Route>
         
           

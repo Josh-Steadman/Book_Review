@@ -1,0 +1,15 @@
+body {
+    background-color: #D9D8B6  ;
+    color: white;
+    padding: 40px;
+    font-family: Arial;
+    text-align: center;
+  }
+
+  nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+  }
+
+ 

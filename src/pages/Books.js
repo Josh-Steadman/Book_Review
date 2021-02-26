@@ -1,6 +1,8 @@
 import React, { Component} from 'react';
 import Header from '../components/Header';
 import Reviews from '../components/Reviews';
+import './pages.css'
+
 
  class Books extends React.Component {
     constructor(props) {
@@ -34,9 +36,9 @@ import Reviews from '../components/Reviews';
                 <Header></Header>
                 <ul>
                     {books.map(book => (
-                    <li key={book.id}>
-                        <a href={`/books/${book.id}`}>go</a>
-                        <h3>{book.title}</h3>
+                    <li className='bookList' key={book.id}>
+                       
+                        <a href={`/books/${book.id}`}><h3>{book.title}</h3></a>
                         <p>{book.author}</p>
                     </li>
                     ))}
