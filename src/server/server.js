@@ -67,22 +67,7 @@ app.get('/api/books', (req, res) => {
       }
     });
   });
-//   app.post('/book',  urlencodedParser, (req, res) => {
-//       console.log(req.body)
-    //   if (req.body.search != '') {
-    //     pool.query(`select * from books where title  LIKE '%${req.body.search}%';`, (err, rows) => {
-    //         if (err) {
-    //           res.send(err);
-    //         } else {
-    //         //   res.send(rows);
-    //         res.redirect('/bookk' + rows);
-    //         }
-    //       });
-    //   } else {
-    //       res.redirect('/books')
-    //   }
-    
-//   });
+
 
   app.get('/book/:search', (req, res) => {
      console.log(req.params)
